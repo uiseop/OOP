@@ -1,6 +1,20 @@
 class Animal {
+  flyBehavior: FlyBehavior;
+
+  constructor() {
+    this.flyBehavior = new FlyNoWay();
+  }
+
   eat() {
     console.log("와구 와구 먹습니다");
+  }
+
+  performFly() {
+    this.flyBehavior.fly();
+  }
+
+  setFlyBehavior(flyBehavior: FlyBehavior) {
+    this.flyBehavior = flyBehavior;
   }
 }
 
@@ -16,9 +30,19 @@ class Swimmable {
   }
 }
 
-class Flyable {
+interface FlyBehavior {
+  fly: () => void;
+}
+
+class FlyWithWings implements FlyBehavior {
   fly() {
     console.log("하늘을 날아다닙니다.");
+  }
+}
+
+class FlyNoWay implements FlyBehavior {
+  fly() {
+    console.log("나는 못 날아요!");
   }
 }
 
@@ -69,3 +93,11 @@ puppy.cryable.cry(); // 컼ㅇ컼 소리를 내며 웁니다
 // 하지만, 객체를 생성할때마다 새로운 객체를 생성하게 되어 이로인해 메모리 낭비가 발생할 수 있겠다.
 
 // 알고리즘 문제 사이트에서도 트리 문제였던가? 생성자 함수로 노드를 생성해서 문제를 풀었을 때 시간초과, 메모리초과 문제가 발생했었는데, 이처럼 메모리가 중요한 경우에는 위 구조가 별로인걸까..? 그럴때는 합성으로 만든 구조를 상속으로 변경시키면 되는걸까...?
+
+puppy.animal.flyBehavior.fly();
+puppy.animal.setFlyBehavior(new FlyWithWings());
+puppy.animal.flyBehavior.fly();
+
+// FlyBehavior의 fly()라는 인터페이스를 바탕으로 프로그램이 실행중에 동적으로 행동을 지정할 수 있음.
+// FlyWithWings와 FlyNoWay 둘 다 FlyBehavior을 implements 함으로써 같은 인터페이스로 다른 행동을 할 수 있음.
+// 더 나아가 다형성을 보장하는 객체를 만들 수 있겠다!
