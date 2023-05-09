@@ -1,4 +1,4 @@
-class Animal {
+class Animall {
   flyBehavior: FlyBehavior;
 
   constructor() {
@@ -57,14 +57,14 @@ class Cryable {
   }
 }
 
-class Dog {
-  animal: Animal;
+class Dogg {
+  animal: Animall;
   cryable: Cryable;
   walkable: Walkable;
   swimmable: Swimmable;
 
   constructor(sound: string) {
-    this.animal = new Animal();
+    this.animal = new Animall();
     this.cryable = new Cryable(sound);
     this.walkable = new Walkable();
     this.swimmable = new Swimmable();
@@ -72,16 +72,16 @@ class Dog {
 }
 
 class Fish {
-  animal: Animal;
+  animal: Animall;
   swimmable: Swimmable;
 
   constructor() {
-    this.animal = new Animal();
+    this.animal = new Animall();
     this.swimmable = new Swimmable();
   }
 }
 
-const puppy = new Dog("컼ㅇ컼");
+const puppy = new Dogg("컼ㅇ컼");
 const 고등어 = new Fish();
 
 puppy.cryable.cry(); // 컼ㅇ컼 소리를 내며 웁니다
