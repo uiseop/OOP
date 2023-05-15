@@ -1,10 +1,12 @@
 import Humidity from "./Humidity.js";
+import ObserverController from "./ObserverController.js";
 import Pressure from "./Pressure.js";
 import Temperature from "./Temperature.js";
 
 class WeatherData {
   constructor() {
     this.weatherDatas = new Map();
+    this.observerController = new ObserverController();
   }
 
   addWeatherData(key, value) {
@@ -36,10 +38,9 @@ weatherData // weatherData 객체의 addWeatherData 메서드 자체에 자기 �
   .addWeatherData("pressure", new Pressure())
   .addWeatherData("temperature", new Temperature());
 
+weatherData.getInfos();
 
-weatherData.getInfos()
-
-weatherData.removeWeatherData("pressure")
+weatherData.removeWeatherData("pressure");
 console.log("@@@@@@@@@@@@@@@Ater remove pressure!@@@@@@@@@@@@@@@@@@");
 
-weatherData.getInfos()
+weatherData.getInfos();
