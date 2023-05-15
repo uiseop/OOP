@@ -1,6 +1,6 @@
 class Temperature {
   constructor() {
-    this.temperature = null;
+    this.temperature = 25;
   }
 
   getData() {

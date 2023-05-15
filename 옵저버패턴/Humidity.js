@@ -1,6 +1,6 @@
 class Humidity {
   constructor() {
-    this.humidity = null;
+    this.humidity = 10;
   }
 
   getData() {

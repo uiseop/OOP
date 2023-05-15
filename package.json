@@ -1,0 +1,20 @@
+{
+  "name": "oop",
+  "version": "1.0.0",
+  "description": "OOP 설계 원칙을 바탕으로 다양한 디자인 패턴들을 ts로 구현해보기",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uiseop/OOP.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uiseop/OOP/issues"
+  },
+  "homepage": "https://github.com/uiseop/OOP#readme"
+}

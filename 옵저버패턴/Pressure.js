@@ -1,6 +1,6 @@
 class Pressure {
   constructor() {
-    this.pressure = null;
+    this.pressure = 19;
   }
 
   getData() {
