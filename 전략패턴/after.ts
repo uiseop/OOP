@@ -1,20 +1,8 @@
 class Animall {
-  flyBehavior: FlyBehavior;
-
-  constructor() {
-    this.flyBehavior = new FlyNoWay();
-  }
+  constructor() {}
 
   eat() {
     console.log("와구 와구 먹습니다");
-  }
-
-  performFly() {
-    this.flyBehavior.fly();
-  }
-
-  setFlyBehavior(flyBehavior: FlyBehavior) {
-    this.flyBehavior = flyBehavior;
   }
 }
 
@@ -24,9 +12,19 @@ class Walkable {
   }
 }
 
-class Swimmable {
+interface SwimBehavior {
+  swim: () => void;
+}
+
+class Swimmable implements SwimBehavior {
   swim() {
     console.log("물살을 가로지르며 헤엄칩니다");
+  }
+}
+
+class SwimWithRocket implements SwimBehavior {
+  swim() {
+    console.log("로켓 엔진을 장착해서 수영합니다. 정말 빨라요!");
   }
 }
 
@@ -61,7 +59,7 @@ class Dogg {
   animal: Animall;
   cryable: Cryable;
   walkable: Walkable;
-  swimmable: Swimmable;
+  swimmable: SwimBehavior;
 
   constructor(sound: string) {
     this.animal = new Animall();
@@ -94,10 +92,7 @@ puppy.cryable.cry(); // 컼ㅇ컼 소리를 내며 웁니다
 
 // 알고리즘 문제 사이트에서도 트리 문제였던가? 생성자 함수로 노드를 생성해서 문제를 풀었을 때 시간초과, 메모리초과 문제가 발생했었는데, 이처럼 메모리가 중요한 경우에는 위 구조가 별로인걸까..? 그럴때는 합성으로 만든 구조를 상속으로 변경시키면 되는걸까...?
 
-puppy.animal.flyBehavior.fly();
-puppy.animal.setFlyBehavior(new FlyWithWings());
-puppy.animal.flyBehavior.fly();
+puppy.swimmable.swim(); // 물살을 가로지르며 헤엄칩니다
+puppy.swimmable = new SwimWithRocket(); // 행동을 변경!
+puppy.swimmable.swim(); // 로켓 엔진을 장착해서 수영합니다. 정말 빨라요!
 
-// FlyBehavior의 fly()라는 인터페이스를 바탕으로 프로그램이 실행중에 동적으로 행동을 지정할 수 있음.
-// FlyWithWings와 FlyNoWay 둘 다 FlyBehavior을 implements 함으로써 같은 인터페이스로 다른 행동을 할 수 있음.
-// 더 나아가 다형성을 보장하는 객체를 만들 수 있겠다!
