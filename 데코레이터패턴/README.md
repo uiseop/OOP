@@ -10,3 +10,23 @@
 변화할 수 있는 부분들을 따로 분리하는 캡슐화를 하는 방식으로 OCP 원칙을 만족시킬 수 있습니다!
 
 그럼 샌드위치를 만들기 위한 코드를 작성해보도록 해봅시다!
+
+```javascript
+class Sandwich {
+  constructor() {
+    this.cost = null;
+    this.description = "샌드위치";
+  }
+
+  getDescription() {
+    return this.description;
+  }
+
+  getCost() {
+    return this.cost;
+  }
+}
+
+const sandwich = new Sandwich();
+```
+여기에다 샌드위치의 여러 토핑들을 추가할 수 있으면 되겠습니다. 각 토핑들은 샌드위치 객체 자체를 래핑하여 사용될 수 있습니다. 그렇기 때문에 래핑해서 리턴하는 객체는 다시 샌드위치의 책임과 역할을 할 수 있겠죠.
