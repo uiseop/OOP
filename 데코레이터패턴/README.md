@@ -30,3 +30,54 @@ class Sandwich {
 const sandwich = new Sandwich();
 ```
 여기에다 샌드위치의 여러 토핑들을 추가할 수 있으면 되겠습니다. 각 토핑들은 샌드위치 객체 자체를 래핑하여 사용될 수 있습니다. 그렇기 때문에 래핑해서 리턴하는 객체는 다시 샌드위치의 책임과 역할을 할 수 있겠죠.
+
+```javascript
+class 호밀빵 {
+  constructor(sandwich) {
+    this.sandwich = sandwich;
+    this.description = "호밀빵";
+    this.cost = 1500;
+  }
+
+  getDescription() {
+    return this.description + this.sandwich.getDescription();
+  }
+
+  getCost() {
+    return this.cost + this.sandwich.getCost();
+  }
+}
+
+class 양상추 {
+  constructor(sandwich) {
+    this.sandwich = sandwich;
+    this.description = "양상추";
+    this.cost = 300;
+  }
+
+  getDescription() {
+    return this.description + this.sandwich.getDescription();
+  }
+
+  getCost() {
+    return this.cost + this.sandwich.getCost();
+  }
+}
+```
+
+이렇게 샌드위치에 토핑으로 사용될 수 있는 재료들을 선언해주면 이제 샌드위치를 내 입맛에 맞게 장식할 수 있습니다!
+
+```javascript
+let sandwich = new Sandwich();
+sandwich = new 호밀빵(sandwich);
+
+console.log(`샌드위치의 이름은 ${sandwich.getDescription()}이고 ${sandwich.getCost()}원 입니다`) // 샌드위치의 이름은 호밀빵샌드위치이고 1500원 입니다
+
+sandwich = new 양상추(sandwich);
+
+console.log(`샌드위치의 이름은 ${sandwich.getDescription()}이고 ${sandwich.getCost()}원 입니다`) // 샌드위치의 이름은 양상추호밀빵샌드위치이고 1800원 입니다
+
+```
+
+이렇게 해서 객체에 추가 요소를 동적으로 추가할 수 있는 데코레이터 패턴을 알아봤습니다.
+데코레이터 패턴을 사용하면 서브 클래스를 만들 때보다 훨씬 유연하게 기능을 확장할 수 있습니다!
